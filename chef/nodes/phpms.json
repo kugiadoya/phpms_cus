@@ -1,0 +1,13 @@
+{
+  "run_list": [
+    "recipe[localedef]",
+    "recipe[remi]",
+    "recipe[apache]",
+    "recipe[apache::phpms]",
+    "recipe[php]",
+    "recipe[mysql]"
+  ],
+  "automatic": {
+    "ipaddress": "phpms"
+  }
+}
