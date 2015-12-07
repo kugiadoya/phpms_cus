@@ -1,1 +1,0 @@
-{"virtualbox":{"/var/www/src":{"create":true,"owner":"vagrant","group":"vagrant","mount_options":["dmode=777","fmode=666"],"guestpath":"/var/www/src","hostpath":"/Users/yuuodagaki/MyVagrant/phpms/src","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/yuuodagaki/MyVagrant/phpms","disabled":false}}}
