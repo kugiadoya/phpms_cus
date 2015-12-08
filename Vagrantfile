@@ -67,4 +67,17 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+  config.vm.provision "chef_solo" do |chef|
+    chef.cookbooks_path = "chef/site-cookbooks/"
+    chef.run_list = %w[
+      recipe[localedef]
+      recipe[remi]
+      recipe[apache]
+      recipe[apache::phpms]
+      recipe[php]
+      recipe[mysql]
+    ]
+  end
+ 
+  config.omnibus.chef_version = :latest
 end
