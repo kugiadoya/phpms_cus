@@ -16,12 +16,16 @@ rpm_package "mysql-community-release" do
 	action :install
 end
 
+# MySQLインストール
 yum_package "mysql-community-server" do
 	action :install
 	flush_cache [:before]
 end
- 
+
+# サービス有効化とスタート
 service "mysqld" do
 	supports :status => true, :restart => true, :reload => true
 	action [ :enable, :start ]
 end
+
+# テンプレート反映
