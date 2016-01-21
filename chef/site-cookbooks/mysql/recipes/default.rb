@@ -20,6 +20,20 @@ end
 yum_package "mysql-community-server" do
 	action :install
 	flush_cache [:before]
+	notifies :run, 'execute[mysqladmin]'
+	notifies :run, 'execute[mysql]'
+end
+
+# root pass変更
+execute 'mysqladmin' do
+	action :nothing
+	command 'mysqladmin password -u root ' + node['mysql']['password']
+end
+
+# host接続許可
+execute 'mysql' do
+	action :nothing
+	command "mysql -u root -p#{node['mysql']['password']} -e \"GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '#{node['mysql']['password']}' WITH GRANT OPTION\""
 end
 
 # サービス有効化とスタート
@@ -29,3 +43,7 @@ service "mysqld" do
 end
 
 # テンプレート反映
+template '/etc/my.cnf' do
+	source "my.cnf.erb"
+	notifies :restart, 'service[mysqld]'
+end
