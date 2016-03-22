@@ -23,7 +23,7 @@
 1. Vagrantにプラグイン導入 `vagrant plugin install vagrant-omnibus`
 1. 任意フォルダ作成 c:\vagrant とします
 1. cd c\vagrant
-1. git　clone https://github.com/kugiadoya/phpms_cus.git
+1. git clone https://github.com/kugiadoya/phpms_cus.git
 1. cd phpms_cus
 1. vagrant up
 
