@@ -18,6 +18,6 @@
 ].each do |pkg|
 	package "#{pkg}" do
 		action :install
-		options '--enablerepo=remi-php56'
+		options '--enablerepo=remi,remi-php71'
 	end
 end
